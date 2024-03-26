@@ -7,10 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4734ED73990408194B6091AA /* Pods_SportTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B224426FAF04BA267DA44B /* Pods_SportTracker.framework */; };
+		E369C38E2B41BE7D00A26447 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369C38D2B41BE7D00A26447 /* NameViewController.swift */; };
+		E369C3A92B48375600A26447 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369C3A82B48375600A26447 /* SplashScreenViewController.swift */; };
+		E369C3AD2B5D222800A26447 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E369C3AC2B5D222800A26447 /* GoogleService-Info.plist */; };
+		E369C3B12B5D6AD100A26447 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E369C3B02B5D6AD100A26447 /* FirebaseAuth */; };
+		E369C3B32B5D6AD100A26447 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = E369C3B22B5D6AD100A26447 /* FirebaseDatabase */; };
+		E369C3B52B5D6AD100A26447 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E369C3B42B5D6AD100A26447 /* FirebaseFirestore */; };
+		E369C3B72B5D6AD100A26447 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E369C3B62B5D6AD100A26447 /* FirebaseStorage */; };
+		E369C3B92B5D749D00A26447 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369C3B82B5D749D00A26447 /* GenderViewController.swift */; };
+		E369C3BC2B5E85F600A26447 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369C3BB2B5E85F600A26447 /* FirebaseManager.swift */; };
+		E369C3BF2B6A50E100A26447 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369C3BE2B6A50E100A26447 /* AuthViewController.swift */; };
+		E369C3C12B6D0AE200A26447 /* SportExpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369C3C02B6D0AE200A26447 /* SportExpViewController.swift */; };
+		E369C3C32B6D0FEB00A26447 /* SportExpNextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369C3C22B6D0FEB00A26447 /* SportExpNextViewController.swift */; };
+		E369C3C52B6D102300A26447 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369C3C42B6D102300A26447 /* PreferenceViewController.swift */; };
+		E3F192472BA1ADD70023ED4E /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F192462BA1ADD70023ED4E /* TimeViewController.swift */; };
+		E3F192492BA5C5130023ED4E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F192482BA5C5130023ED4E /* APIManager.swift */; };
+		E3F1924B2BA5C5B50023ED4E /* Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F1924A2BA5C5B50023ED4E /* Documents.swift */; };
+		E3F192502BAACD470023ED4E /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F1924F2BAACD470023ED4E /* MainMenuViewController.swift */; };
+		E3F192522BAACD570023ED4E /* MainMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F192512BAACD570023ED4E /* MainMenuInteractor.swift */; };
+		E3F192542BAACD660023ED4E /* MainMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F192532BAACD660023ED4E /* MainMenuPresenter.swift */; };
+		E3F192562BAACD8B0023ED4E /* MainMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F192552BAACD8B0023ED4E /* MainMenuRouter.swift */; };
+		E3F192582BAACDA00023ED4E /* MainMenuFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F192572BAACDA00023ED4E /* MainMenuFactory.swift */; };
 		E3FD2EB02AFB86BA005060A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD2EAF2AFB86BA005060A2 /* AppDelegate.swift */; };
 		E3FD2EB22AFB86BA005060A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD2EB12AFB86BA005060A2 /* SceneDelegate.swift */; };
-		E3FD2EB42AFB86BA005060A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD2EB32AFB86BA005060A2 /* ViewController.swift */; };
-		E3FD2EB72AFB86BA005060A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3FD2EB52AFB86BA005060A2 /* Main.storyboard */; };
 		E3FD2EB92AFB86BB005060A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3FD2EB82AFB86BB005060A2 /* Assets.xcassets */; };
 		E3FD2EBC2AFB86BB005060A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3FD2EBA2AFB86BB005060A2 /* LaunchScreen.storyboard */; };
 		E3FD2EC72AFB86BB005060A2 /* SportTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD2EC62AFB86BB005060A2 /* SportTrackerTests.swift */; };
@@ -36,11 +56,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		164F527D5431D13D5D67388D /* Pods-SportTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportTracker.debug.xcconfig"; path = "Target Support Files/Pods-SportTracker/Pods-SportTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		B83481E3D121CBD265581CBA /* Pods-SportTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportTracker.release.xcconfig"; path = "Target Support Files/Pods-SportTracker/Pods-SportTracker.release.xcconfig"; sourceTree = "<group>"; };
+		E369C38D2B41BE7D00A26447 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		E369C3A82B48375600A26447 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		E369C3AC2B5D222800A26447 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E369C3B82B5D749D00A26447 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
+		E369C3BB2B5E85F600A26447 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		E369C3BE2B6A50E100A26447 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		E369C3C02B6D0AE200A26447 /* SportExpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportExpViewController.swift; sourceTree = "<group>"; };
+		E369C3C22B6D0FEB00A26447 /* SportExpNextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportExpNextViewController.swift; sourceTree = "<group>"; };
+		E369C3C42B6D102300A26447 /* PreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
+		E3F192462BA1ADD70023ED4E /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
+		E3F192482BA5C5130023ED4E /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		E3F1924A2BA5C5B50023ED4E /* Documents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documents.swift; sourceTree = "<group>"; };
+		E3F1924F2BAACD470023ED4E /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		E3F192512BAACD570023ED4E /* MainMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuInteractor.swift; sourceTree = "<group>"; };
+		E3F192532BAACD660023ED4E /* MainMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuPresenter.swift; sourceTree = "<group>"; };
+		E3F192552BAACD8B0023ED4E /* MainMenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuRouter.swift; sourceTree = "<group>"; };
+		E3F192572BAACDA00023ED4E /* MainMenuFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuFactory.swift; sourceTree = "<group>"; };
 		E3FD2EAC2AFB86BA005060A2 /* SportTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FD2EAF2AFB86BA005060A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3FD2EB12AFB86BA005060A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E3FD2EB32AFB86BA005060A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E3FD2EB62AFB86BA005060A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3FD2EB82AFB86BB005060A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3FD2EBB2AFB86BB005060A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3FD2EBD2AFB86BB005060A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +86,7 @@
 		E3FD2ECC2AFB86BB005060A2 /* SportTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FD2ED02AFB86BB005060A2 /* SportTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTrackerUITests.swift; sourceTree = "<group>"; };
 		E3FD2ED22AFB86BB005060A2 /* SportTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E5B224426FAF04BA267DA44B /* Pods_SportTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +94,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E369C3B32B5D6AD100A26447 /* FirebaseDatabase in Frameworks */,
+				E369C3B52B5D6AD100A26447 /* FirebaseFirestore in Frameworks */,
+				4734ED73990408194B6091AA /* Pods_SportTracker.framework in Frameworks */,
+				E369C3B72B5D6AD100A26447 /* FirebaseStorage in Frameworks */,
+				E369C3B12B5D6AD100A26447 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +119,125 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		459190C0B82E29EE46DFB020 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				164F527D5431D13D5D67388D /* Pods-SportTracker.debug.xcconfig */,
+				B83481E3D121CBD265581CBA /* Pods-SportTracker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E369C38A2B41BD2A00A26447 /* Registr */ = {
+			isa = PBXGroup;
+			children = (
+				E369C38C2B41BE6D00A26447 /* Name */,
+				E369C3972B4829E600A26447 /* Gender */,
+				E369C3982B4829FF00A26447 /* SportExp */,
+				E369C39A2B482A7E00A26447 /* SportExpNext */,
+				E369C3992B482A3300A26447 /* Preferences  */,
+				E369C39B2B482A9500A26447 /* Time */,
+			);
+			path = Registr;
+			sourceTree = "<group>";
+		};
+		E369C38B2B41BD9700A26447 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				E369C3A72B48373A00A26447 /* SplashScreen */,
+				E369C3BD2B6A50C200A26447 /* Auth */,
+				E369C38A2B41BD2A00A26447 /* Registr */,
+				E3F1924E2BAACD0A0023ED4E /* MainMenu */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		E369C38C2B41BE6D00A26447 /* Name */ = {
+			isa = PBXGroup;
+			children = (
+				E369C38D2B41BE7D00A26447 /* NameViewController.swift */,
+			);
+			path = Name;
+			sourceTree = "<group>";
+		};
+		E369C3972B4829E600A26447 /* Gender */ = {
+			isa = PBXGroup;
+			children = (
+				E369C3B82B5D749D00A26447 /* GenderViewController.swift */,
+			);
+			path = Gender;
+			sourceTree = "<group>";
+		};
+		E369C3982B4829FF00A26447 /* SportExp */ = {
+			isa = PBXGroup;
+			children = (
+				E369C3C02B6D0AE200A26447 /* SportExpViewController.swift */,
+			);
+			path = SportExp;
+			sourceTree = "<group>";
+		};
+		E369C3992B482A3300A26447 /* Preferences  */ = {
+			isa = PBXGroup;
+			children = (
+				E369C3C42B6D102300A26447 /* PreferenceViewController.swift */,
+			);
+			path = "Preferences ";
+			sourceTree = "<group>";
+		};
+		E369C39A2B482A7E00A26447 /* SportExpNext */ = {
+			isa = PBXGroup;
+			children = (
+				E369C3C22B6D0FEB00A26447 /* SportExpNextViewController.swift */,
+			);
+			path = SportExpNext;
+			sourceTree = "<group>";
+		};
+		E369C39B2B482A9500A26447 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				E3F192462BA1ADD70023ED4E /* TimeViewController.swift */,
+			);
+			path = Time;
+			sourceTree = "<group>";
+		};
+		E369C3A72B48373A00A26447 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E369C3A82B48375600A26447 /* SplashScreenViewController.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		E369C3BA2B5E85E000A26447 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				E369C3BB2B5E85F600A26447 /* FirebaseManager.swift */,
+				E3F192482BA5C5130023ED4E /* APIManager.swift */,
+				E3F1924A2BA5C5B50023ED4E /* Documents.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		E369C3BD2B6A50C200A26447 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				E369C3BE2B6A50E100A26447 /* AuthViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		E3F1924E2BAACD0A0023ED4E /* MainMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E3F1924F2BAACD470023ED4E /* MainMenuViewController.swift */,
+				E3F192512BAACD570023ED4E /* MainMenuInteractor.swift */,
+				E3F192532BAACD660023ED4E /* MainMenuPresenter.swift */,
+				E3F192572BAACDA00023ED4E /* MainMenuFactory.swift */,
+				E3F192552BAACD8B0023ED4E /* MainMenuRouter.swift */,
+			);
+			path = MainMenu;
+			sourceTree = "<group>";
+		};
 		E3FD2EA32AFB86BA005060A2 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +245,8 @@
 				E3FD2EC52AFB86BB005060A2 /* SportTrackerTests */,
 				E3FD2ECF2AFB86BB005060A2 /* SportTrackerUITests */,
 				E3FD2EAD2AFB86BA005060A2 /* Products */,
+				459190C0B82E29EE46DFB020 /* Pods */,
+				E98C6F9A5583DA4CA20E14B3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +263,14 @@
 		E3FD2EAE2AFB86BA005060A2 /* SportTracker */ = {
 			isa = PBXGroup;
 			children = (
+				E369C3BA2B5E85E000A26447 /* Firebase */,
+				E369C38B2B41BD9700A26447 /* Presentation */,
 				E3FD2EAF2AFB86BA005060A2 /* AppDelegate.swift */,
 				E3FD2EB12AFB86BA005060A2 /* SceneDelegate.swift */,
-				E3FD2EB32AFB86BA005060A2 /* ViewController.swift */,
-				E3FD2EB52AFB86BA005060A2 /* Main.storyboard */,
 				E3FD2EB82AFB86BB005060A2 /* Assets.xcassets */,
 				E3FD2EBA2AFB86BB005060A2 /* LaunchScreen.storyboard */,
 				E3FD2EBD2AFB86BB005060A2 /* Info.plist */,
+				E369C3AC2B5D222800A26447 /* GoogleService-Info.plist */,
 			);
 			path = SportTracker;
 			sourceTree = "<group>";
@@ -127,6 +292,14 @@
 			path = SportTrackerUITests;
 			sourceTree = "<group>";
 		};
+		E98C6F9A5583DA4CA20E14B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5B224426FAF04BA267DA44B /* Pods_SportTracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,15 +307,23 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3FD2ED62AFB86BB005060A2 /* Build configuration list for PBXNativeTarget "SportTracker" */;
 			buildPhases = (
+				34ECE137BB3B5B44C0B240D1 /* [CP] Check Pods Manifest.lock */,
 				E3FD2EA82AFB86BA005060A2 /* Sources */,
 				E3FD2EA92AFB86BA005060A2 /* Frameworks */,
 				E3FD2EAA2AFB86BA005060A2 /* Resources */,
+				0F9009FDB0D6A8B7747196BB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SportTracker;
+			packageProductDependencies = (
+				E369C3B02B5D6AD100A26447 /* FirebaseAuth */,
+				E369C3B22B5D6AD100A26447 /* FirebaseDatabase */,
+				E369C3B42B5D6AD100A26447 /* FirebaseFirestore */,
+				E369C3B62B5D6AD100A26447 /* FirebaseStorage */,
+			);
 			productName = SportTracker;
 			productReference = E3FD2EAC2AFB86BA005060A2 /* SportTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +396,9 @@
 				Base,
 			);
 			mainGroup = E3FD2EA32AFB86BA005060A2;
+			packageReferences = (
+				E369C3AF2B5D6AD100A26447 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = E3FD2EAD2AFB86BA005060A2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,7 +417,7 @@
 			files = (
 				E3FD2EBC2AFB86BB005060A2 /* LaunchScreen.storyboard in Resources */,
 				E3FD2EB92AFB86BB005060A2 /* Assets.xcassets in Resources */,
-				E3FD2EB72AFB86BA005060A2 /* Main.storyboard in Resources */,
+				E369C3AD2B5D222800A26447 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,14 +437,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F9009FDB0D6A8B7747196BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SportTracker/Pods-SportTracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SportTracker/Pods-SportTracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SportTracker/Pods-SportTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		34ECE137BB3B5B44C0B240D1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SportTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E3FD2EA82AFB86BA005060A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3FD2EB42AFB86BA005060A2 /* ViewController.swift in Sources */,
+				E3F192492BA5C5130023ED4E /* APIManager.swift in Sources */,
+				E369C3BF2B6A50E100A26447 /* AuthViewController.swift in Sources */,
+				E369C3B92B5D749D00A26447 /* GenderViewController.swift in Sources */,
+				E3F1924B2BA5C5B50023ED4E /* Documents.swift in Sources */,
 				E3FD2EB02AFB86BA005060A2 /* AppDelegate.swift in Sources */,
+				E369C3C12B6D0AE200A26447 /* SportExpViewController.swift in Sources */,
+				E3F192502BAACD470023ED4E /* MainMenuViewController.swift in Sources */,
+				E369C3BC2B5E85F600A26447 /* FirebaseManager.swift in Sources */,
+				E3F192522BAACD570023ED4E /* MainMenuInteractor.swift in Sources */,
+				E3F192472BA1ADD70023ED4E /* TimeViewController.swift in Sources */,
+				E3F192562BAACD8B0023ED4E /* MainMenuRouter.swift in Sources */,
+				E3F192582BAACDA00023ED4E /* MainMenuFactory.swift in Sources */,
+				E369C3C52B6D102300A26447 /* PreferenceViewController.swift in Sources */,
+				E3F192542BAACD660023ED4E /* MainMenuPresenter.swift in Sources */,
+				E369C3A92B48375600A26447 /* SplashScreenViewController.swift in Sources */,
 				E3FD2EB22AFB86BA005060A2 /* SceneDelegate.swift in Sources */,
+				E369C3C32B6D0FEB00A26447 /* SportExpNextViewController.swift in Sources */,
+				E369C38E2B41BE7D00A26447 /* NameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +538,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E3FD2EB52AFB86BA005060A2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E3FD2EB62AFB86BA005060A2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E3FD2EBA2AFB86BB005060A2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -432,6 +665,7 @@
 		};
 		E3FD2ED72AFB86BB005060A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 164F527D5431D13D5D67388D /* Pods-SportTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -441,7 +675,6 @@
 				INFOPLIST_FILE = SportTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -459,6 +692,7 @@
 		};
 		E3FD2ED82AFB86BB005060A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B83481E3D121CBD265581CBA /* Pods-SportTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -468,7 +702,6 @@
 				INFOPLIST_FILE = SportTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -596,6 +829,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E369C3AF2B5D6AD100A26447 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E369C3B02B5D6AD100A26447 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E369C3AF2B5D6AD100A26447 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E369C3B22B5D6AD100A26447 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E369C3AF2B5D6AD100A26447 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		E369C3B42B5D6AD100A26447 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E369C3AF2B5D6AD100A26447 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		E369C3B62B5D6AD100A26447 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E369C3AF2B5D6AD100A26447 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E3FD2EA42AFB86BA005060A2 /* Project object */;
 }

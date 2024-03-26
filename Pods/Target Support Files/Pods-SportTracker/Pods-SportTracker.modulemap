@@ -1,0 +1,6 @@
+framework module Pods_SportTracker {
+  umbrella header "Pods-SportTracker-umbrella.h"
+
+  export *
+  module * { export * }
+}
