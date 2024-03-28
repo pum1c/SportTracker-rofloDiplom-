@@ -14,6 +14,7 @@ class SportExpNextViewController: UIViewController {
     let SportExpNextLebel = UILabel()
 
     var selectedButton: UIButton?
+    var selectedExpNext: String = ""
 
     let newButton = UIButton()
     let mediumButton = UIButton()
@@ -24,6 +25,19 @@ class SportExpNextViewController: UIViewController {
     let heigh = 41
     let width = 197
 
+    var receivedData: [String:Any?]
+    var newUser: UserData
+    
+    init(data: Any?, newUser: UserData) {
+        self.receivedData = data as! [String : Any?]
+        self.newUser = newUser
+        super.init(nibName: nil, bundle: nil)
+    }
+        
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -75,6 +89,7 @@ class SportExpNextViewController: UIViewController {
         newButton.setTitle("Новичок", for: .normal)
         newButton.titleLabel?.font = .systemFont(ofSize: 14)
         newButton.setTitleColor(UIColor.black, for: .normal)
+        newButton.restorationIdentifier = "new"
         newButton.addTarget(self, action: #selector(expButtonTapped(_:)), for: .touchUpInside)
 
         view.addSubview(newButton)
@@ -93,6 +108,7 @@ class SportExpNextViewController: UIViewController {
         mediumButton.setTitle("Любитель", for: .normal)
         mediumButton.titleLabel?.font = .systemFont(ofSize: 14)
         mediumButton.setTitleColor(UIColor.black, for: .normal)
+        mediumButton.restorationIdentifier = "medium"
         mediumButton.addTarget(self, action: #selector(expButtonTapped(_:)), for: .touchUpInside)
 
         view.addSubview(mediumButton)
@@ -111,6 +127,7 @@ class SportExpNextViewController: UIViewController {
         profButton.setTitle("Проффесионал", for: .normal)
         profButton.titleLabel?.font = .systemFont(ofSize: 14)
         profButton.setTitleColor(UIColor.black, for: .normal)
+        profButton.restorationIdentifier = "prof"
         profButton.addTarget(self, action: #selector(expButtonTapped(_:)), for: .touchUpInside)
 
         view.addSubview(profButton)
@@ -150,6 +167,19 @@ class SportExpNextViewController: UIViewController {
         sender.layer.borderWidth = 2
         selectedButton = sender
         
+        if let selectedTitle = sender.restorationIdentifier {
+            selectedExpNext = selectedTitle
+                print("Выбран пол: \(selectedExpNext)")
+                
+                if selectedExpNext == "new" {
+                    selectedExpNext = "new"
+                } else if selectedExpNext == "meduim" {
+                    selectedExpNext = "medium"
+                } else if selectedExpNext == "prof" {
+                    selectedExpNext = "prof"
+                }
+            }
+        
         if selectedButton != nil {
             button.backgroundColor = .white
             button.isEnabled = true
@@ -160,12 +190,15 @@ class SportExpNextViewController: UIViewController {
     }
 
     @objc func switchController() {
+        
+        receivedData["sportExtNext"] = selectedExpNext
+        
         UIView.transition(with: view.window!,
                           duration: 1.0,
                           options: .transitionCrossDissolve,
                           animations: {
             // Выполняем переход на второй ViewController
-            self.navigationController?.pushViewController(PreferenceViewController(), animated: false)
+            self.navigationController?.pushViewController(PreferenceViewController(data: self.receivedData, newUser: self.newUser), animated: false)
         },
                           completion: nil)}
 

@@ -12,6 +12,7 @@ import SnapKit
 class GenderViewController: UIViewController {
     
     var selectedButton: UIButton?
+    var selectedGender: String = ""
     
     let genderLebel = UILabel()
     let cont = UIView()
@@ -19,6 +20,19 @@ class GenderViewController: UIViewController {
     let female = UIButton()
     let button = UIButton()
 
+    var receivedData: [String: Any]
+    let newUser: UserData
+
+    init(data: Any?, newUser: UserData) {
+        self.receivedData = data as! [String : Any?]
+        self.newUser = newUser
+        super.init(nibName: nil, bundle: nil)
+    }
+        
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -81,6 +95,7 @@ class GenderViewController: UIViewController {
         female.titleLabel?.textAlignment = .center
         female.imageView?.contentMode = .scaleAspectFit
         female.addTarget(self, action: #selector(genderButtonTapped(_:)), for: .touchUpInside)
+        female.restorationIdentifier = "female"
         
         male.backgroundColor = #colorLiteral(red: 0.4741510749, green: 0.5755669475, blue: 0.9479667544, alpha: 1)
         male.layer.cornerRadius = 15
@@ -88,6 +103,7 @@ class GenderViewController: UIViewController {
         male.titleLabel?.textAlignment = .center
         male.imageView?.contentMode = .scaleAspectFit
         male.addTarget(self, action: #selector(genderButtonTapped(_:)), for: .touchUpInside)
+        male.restorationIdentifier = "male"
 
         cont.addSubview(female)
         
@@ -113,6 +129,17 @@ class GenderViewController: UIViewController {
         sender.layer.borderColor = UIColor.white.cgColor
         sender.layer.borderWidth = 2
         selectedButton = sender
+        
+        if let selectedTitle = sender.restorationIdentifier {
+                selectedGender = selectedTitle
+                print("Выбран пол: \(selectedGender)")
+                
+                if selectedGender == "male" {
+                    selectedGender = "male"
+                } else if selectedGender == "female" {
+                    selectedGender = "female"
+                }
+            }
         
         if selectedButton != nil {
             button.backgroundColor = .white
@@ -147,12 +174,16 @@ class GenderViewController: UIViewController {
             return
         }
         
+        if receivedData is [String: Any] {
+            receivedData["gender"] = selectedGender
+        }
+        
         UIView.transition(with: view.window!,
                           duration: 1.0,
                           options: .transitionCrossDissolve,
                           animations: {
             // Выполняем переход на второй ViewController
-            self.navigationController?.pushViewController(SportExpViewController(), animated: false)
+            self.navigationController?.pushViewController(SportExpViewController(data:self.receivedData, newUser: self.newUser), animated: false)
         },
                           completion: nil)}
 }

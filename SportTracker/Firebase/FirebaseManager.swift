@@ -36,13 +36,26 @@ class FirebaseManager {
             }
             
             if let userId = result?.user.uid {
-                completion(userId)
+                // Успешный вход, теперь получаем данные пользователя из Firestore
+                Firestore.firestore().collection("date").document(userId).getDocument { document, error in
+                    if let document = document, document.exists {
+                        // Документ пользователя найден, извлекаем данные
+                        let userData = document.data()
+                        completion(userId)
+                    } else {
+                        // Документ пользователя не найден
+                        print("Данные пользователя не найдены в Firestore.")
+                        completion(nil)
+                    }
+                }
+                
             } else {
                 print("Не удалось получить UID пользователя.")
                 completion(nil)
             }
         }
     }
+
 }
 
 struct UserData {

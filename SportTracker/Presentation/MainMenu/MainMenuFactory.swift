@@ -1,30 +1,21 @@
-//
-//  MainMenuFactory.swift
-//  SportTracker
-//
-//  Created by Вадим Амбарцумян on 20.03.2024.
-//
-
-import Foundation
-import UIKit.UIViewController
-
+import UIKit
 protocol MainMenuFactory {
-
-    func makeMainMenuViewController() -> UIViewController
+    func makeMainMenuViewController(userId: String) -> UIViewController
 }
 
 extension MainMenuFactory {
-    
-    func makeMainMenuViewController() -> UIViewController {
+    func makeMainMenuViewController(userId: String) -> UIViewController {
         let interactor = MainMenuInteractor()
-        let viewController = MainMenuViewController()
+        let viewController = MainMenuViewController(userId: userId)
         var router: MainMenuRouter = MainMenuRouterImpl()
         router.viewController = viewController
         let presenter = MainMenuPresenter(router: router)
         interactor.presenter = presenter
         presenter.viewController = viewController
         viewController.interactor = interactor
-        
+
         return viewController
     }
 }
+
+final class MainMenuFactoryImpl: MainMenuFactory {}

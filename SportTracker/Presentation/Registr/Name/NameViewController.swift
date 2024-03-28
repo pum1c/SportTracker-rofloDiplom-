@@ -16,10 +16,6 @@ final class NameViewController: UIViewController {
     
     // MARK: - Public properties
     
-    let fbManager = FirebaseManager()
-    let db = APIManager()
-    
-    
     let nameLabel = UILabel()
     let nameTextField = UITextField()
     let emailTextField = UITextField()
@@ -150,41 +146,24 @@ final class NameViewController: UIViewController {
     @objc func switchController() {
         // Создаем нового пользователя
         let newUser = UserData(email: emailTextField.text!, name: nameTextField.text!, password: passwordTextField.text!)
-
-        // Регистрируем нового пользователя
-        fbManager.registNewUser(user: newUser) { receivedUserID, error in
-            if let error = error {
-                print("Ошибка при регистрации нового пользователя: \(error.localizedDescription)")
-            } else if let receivedUserID = receivedUserID {
-                // Подготавливаем данные для сохранения в Firestore
-                let dataToSend: [String:Any] = [
-                    "name": self.nameTextField.text!,
-                    "mail": self.emailTextField.text!
-                ]
-
-                // Отправляем данные в Firestore, используя полученный userID
-                self.db.sendDataToFirestore(collection: "date", userID: receivedUserID, data: dataToSend) { error in
-                    if let error = error {
-                        print("Ошибка при отправке данных: \(error.localizedDescription)")
-                    } else {
-                        print("Данные успешно отправлены в Firestore!")
-                        
-                        // Переходим на следующий экран
-                        DispatchQueue.main.async {
-                            UIView.transition(with: self.view.window!,
-                                              duration: 1.0,
-                                              options: .transitionCrossDissolve,
-                                              animations: {
-                                                  self.navigationController?.pushViewController(GenderViewController(), animated: false)
-                                              },
-                                              completion: nil)
-                        }
-                    }
-                }
-            }
+        
+        let dataToSend: [String:Any] = [
+                            "name": self.nameTextField.text!,
+                            "mail": self.emailTextField.text!
+                        ]
+        
+        DispatchQueue.main.async {
+            UIView.transition(with: self.view.window!,
+                              duration: 1.0,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                self.navigationController?.pushViewController(GenderViewController(data:dataToSend, newUser: newUser), animated: false)
+            },
+                              completion: nil)
         }
     }
 }
+        
 
 extension NameViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {

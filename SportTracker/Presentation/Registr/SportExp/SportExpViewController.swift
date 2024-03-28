@@ -13,6 +13,18 @@ import SnapKit
 class SportExpViewController: UIViewController {
     
     var selectedButton: UIButton?
+    var receivedData: [String:Any?]
+    var newUser: UserData
+        
+    init(data: Any?, newUser: UserData) {
+        self.receivedData = data as! [String : Any?]
+        self.newUser = newUser
+        super.init(nibName: nil, bundle: nil)
+    }
+        
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     let genderLebel = UILabel()
     let cont = UIView()
@@ -106,23 +118,25 @@ class SportExpViewController: UIViewController {
     }
     
     @objc func yesPick() {
+        receivedData["sportExp"] = "yes"
         UIView.transition(with: view.window!,
                           duration: 1.0,
                           options: .transitionCrossDissolve,
                           animations: {
             // Выполняем переход на второй ViewController
-            self.navigationController?.pushViewController(SportExpNextViewController(), animated: false)
+            self.navigationController?.pushViewController(SportExpNextViewController(data:self.receivedData, newUser: self.newUser), animated: false)
         },
                           completion: nil)
     }
     
     @objc func noPick() {
+        receivedData["sportExp"] = "no"
         UIView.transition(with: view.window!,
                           duration: 1.0,
                           options: .transitionCrossDissolve,
                           animations: {
             // Выполняем переход на второй ViewController
-            self.navigationController?.pushViewController(PreferenceViewController(), animated: false)
+            self.navigationController?.pushViewController(PreferenceViewController(data:self.receivedData, newUser: self.newUser), animated: false)
         },
                           completion: nil)
     }

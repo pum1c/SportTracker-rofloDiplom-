@@ -24,15 +24,26 @@ class APIManager {
         return db
     }
     
-    func getPost(collection: String, docName: String, completion: @escaping(Document?) -> Void) {
-        let db = configureFB()
-        db.collection(collection).document(docName).getDocument(completion: { (document, error ) in
-            guard error == nil else { completion(nil); return }
-            let doc = Document(field1: document?.get("field1") as! String, field2: document?.get("field2") as! String)
-            completion(doc)
-            
-        })
+    func getUserData(userID: String, completion: @escaping ([String: Any]?, Error?) -> Void) {
+        // Получаем ссылку на коллекцию "users" в Firestore и документ с UID пользователя
+        let userDocRef = Firestore.firestore().collection("date").document(userID)
+        
+        // Получаем данные пользователя из Firestore
+        userDocRef.getDocument { document, error in
+            if let error = error {
+                // Если возникла ошибка, передаем ее обратно через замыкание completion
+                completion(nil, error)
+            } else if let document = document, document.exists {
+                // Если документ пользователя существует, извлекаем его данные и передаем их обратно через замыкание completion
+                let userData = document.data()
+                completion(userData, nil)
+            } else {
+                // Если документ пользователя не существует, передаем nil через замыкание completion
+                completion(nil, nil)
+            }
+        }
     }
+
     
     func sendDataToFirestore(collection: String, userID: String, data: [String: Any], completion: @escaping (Error?) -> Void) {
         // Получаем ссылку на Firestore

@@ -16,6 +16,8 @@ class PreferenceViewController: UIViewController {
     let fullBodyLabel = UILabel()
     
     var selectedButton: UIButton?
+    var selectedPref: String = ""
+    
     let splitButton = UIButton()
     let fullBodyButton = UIButton()
     let button = UIButton()
@@ -24,6 +26,19 @@ class PreferenceViewController: UIViewController {
     
     let labelHight = 64
     let labelWidth = 280
+    
+    var receivedData: [String:Any?]
+    var newUser: UserData
+        
+    init(data: Any?, newUser: UserData) {
+        self.receivedData = data as! [String : Any?]
+        self.newUser = newUser
+        super.init(nibName: nil, bundle: nil)
+    }
+        
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +105,8 @@ class PreferenceViewController: UIViewController {
         splitButton.setTitle("Сплит", for: .normal)
         splitButton.titleLabel?.textAlignment = .center
         splitButton.imageView?.contentMode = .scaleAspectFit
+        splitButton.restorationIdentifier = "split"
+
         splitButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         
         fullBodyButton.backgroundColor = #colorLiteral(red: 0.4741510749, green: 0.5755669475, blue: 0.9479667544, alpha: 1)
@@ -97,6 +114,7 @@ class PreferenceViewController: UIViewController {
         fullBodyButton.setTitle("Фулл-Бади", for: .normal)
         fullBodyButton.titleLabel?.textAlignment = .center
         fullBodyButton.imageView?.contentMode = .scaleAspectFit
+        fullBodyButton.restorationIdentifier = "fullbody"
         fullBodyButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         
         cont.addSubview(splitButton)
@@ -182,6 +200,17 @@ class PreferenceViewController: UIViewController {
         sender.layer.borderWidth = 2
         selectedButton = sender
         
+        if let selectedTitle = sender.restorationIdentifier {
+            selectedPref = selectedTitle
+                print("Выбран пол: \(selectedPref)")
+                
+                if selectedPref == "split" {
+                    selectedPref = "split"
+                } else if selectedPref == "fullbody" {
+                    selectedPref = "fullbody"
+                }
+            }
+        
         if selectedButton != nil {
             button.backgroundColor = .white
             button.isEnabled = true
@@ -192,12 +221,15 @@ class PreferenceViewController: UIViewController {
     }
     
     @objc func switchController() {
+        
+        receivedData["preference"] = selectedPref
+        
         UIView.transition(with: view.window!,
                           duration: 1.0,
                           options: .transitionCrossDissolve,
                           animations: {
             // Выполняем переход на второй ViewController
-            self.navigationController?.pushViewController(TimeViewController(), animated: false)
+            self.navigationController?.pushViewController(TimeViewController(data: self.receivedData, newUser: self.newUser), animated: false)
         },
                           completion: nil)}
     
