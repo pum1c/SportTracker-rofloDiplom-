@@ -17,9 +17,5 @@ final class MainMenuRouterImpl: MainMenuRouter {
 
     weak var viewController: MainMenuViewController?
 
-    func openBirthdayDate(name: String) {
-        guard let navigationController = viewController?.navigationController else { return }
-
-        //navigationController.pushViewController(birthdayDateFactory.makeBirthdayDateViewController(name: name), animated: true)
-    }
 }
+

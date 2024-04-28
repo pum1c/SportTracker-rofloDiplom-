@@ -191,7 +191,7 @@ class SportExpNextViewController: UIViewController {
 
     @objc func switchController() {
         
-        receivedData["sportExtNext"] = selectedExpNext
+        receivedData["sportExpNext"] = selectedExpNext
         
         UIView.transition(with: view.window!,
                           duration: 1.0,

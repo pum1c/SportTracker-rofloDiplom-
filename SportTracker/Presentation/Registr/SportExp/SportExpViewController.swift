@@ -131,6 +131,7 @@ class SportExpViewController: UIViewController {
     
     @objc func noPick() {
         receivedData["sportExp"] = "no"
+        receivedData["sportExpNext"] = "no"
         UIView.transition(with: view.window!,
                           duration: 1.0,
                           options: .transitionCrossDissolve,

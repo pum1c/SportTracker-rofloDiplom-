@@ -155,17 +155,16 @@ class AuthViewController: UIViewController {
                     passwordTextField.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
                     
                     print("Пользователь успешно аутентифицирован. UID: \(userId)")
-                    
-                    UIView.transition(with: self.view.window!,
-                                      duration: 1.0,
-                                      options: .transitionCrossDissolve,
-                                      animations: {
-                        // Создаем экземпляр фабрики главного меню
-                        let mainMenuFactory: MainMenuFactory = MainMenuFactoryImpl()
-                        self.navigationController?.pushViewController(mainMenuFactory.makeMainMenuViewController(userId: userId), animated: true)
-
-                    },
-                                      completion: nil)
+                    DispatchQueue.main.async {
+                        UIView.transition(with: self.view.window!,
+                                          duration: 0.2,
+                                          options: .transitionCrossDissolve,
+                                          animations: {
+                            let mainMenuFactory: MainMenuFactory = MainMenuFactoryImpl()
+                            self.navigationController?.pushViewController(mainMenuFactory.makeMainMenuViewController(userId: userId), animated: true)
+                            
+                        },
+                                          completion: nil) }
                 } else {
                     emailTextField.text = ""
                     emailTextField.layer.borderWidth = 1

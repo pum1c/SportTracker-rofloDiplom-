@@ -9,42 +9,306 @@ import Foundation
 import UIKit
 import SnapKit
 
-protocol MainMenuDisplayLogic: AnyObject {}
+protocol MainMenuDisplayLogic: AnyObject {
+    
+    func dataToInteractor()
+    func updateInterfaceWithProcessedData(username: String, gender: String, sportExp: String, sportExpNext: String, preference: String, time: Int)
+}
 
-class MainMenuViewController: UIViewController {
-    
+protocol SegmentControlDelegate: AnyObject {
+    func segmentControlDidChange(selectedIndex: Int)
+}
+
+final class MainMenuViewController: UIViewController {
+
     var interactor: MainMenuBusinessLogic?
-    
+
     let db = APIManager()
     let userId: String
-        
+    
     init(userId: String) {
         self.userId = userId
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    let helloLabel = UILabel()
+    
+    let segmentControl = UISegmentedControl(items: ["Тренировка", "Диета"])
+    
+    let trainConteinerView = UIView()
+    let trainLabel = UILabel()
+    let firstExsButton = UIButton()
+    let secondExsButton = UIButton()
+    let thirdExsButton = UIButton()
+    let fourthExsButton = UIButton()
+    let fifthExsButton = UIButton()
+    
+    let buttonHeight = 48
+    let buttonWidth = 280
+    let buttonColor = #colorLiteral(red: 0.850980401, green: 0.850980401, blue: 0.850980401, alpha: 1)
+    
+    let completedButton = UIButton()
+
+    let dietLabel = UILabel()
+    let inputTextField = UITextField()
+    let addButton = UIButton()
+
+    let labelsStackView = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let userId = userId
+        view.backgroundColor = .white
         
-        db.getUserData(userID: userId) { userData, error in
-            if let error = error {
-                print("Ошибка при получении данных пользователя: \(error.localizedDescription)")
-            } else if let userData = userData {
-                print("Данные пользователя: \(userData)")
-            } else {
-                print("Данные пользователя не найдены.")
-            }
-        }
-        
+        setup()
         navigationItem.hidesBackButton = true
         navigationItem.leftBarButtonItem = nil
     }
+    
+    func setup() {
+        dataToInteractor()
+        setupHelloLabel()
+        setupSegmentControl()
+        setupTrainContainer()
+        setupCompleatedButton()
+        setupDietLabel()
+        setupInputTextField()
+        setupAddButton()
+    }
+    
+    func setupHelloLabel() {
+        helloLabel.textColor = .black
+        helloLabel.textAlignment = .center
+        helloLabel.font = .systemFont(ofSize: 20)
+        
+        view.addSubview(helloLabel)
+        
+        helloLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().inset(70)
+            make.width.equalTo(150)
+            make.height.equalTo(30)
+        }
+    }
+    
+    func setupSegmentControl() {
+        segmentControl.selectedSegmentTintColor = UIColor.white
+        segmentControl.backgroundColor = #colorLiteral(red: 0.850980401, green: 0.850980401, blue: 0.850980401, alpha: 1)
+        segmentControl.selectedSegmentIndex = 0
+        segmentControl.layer.borderWidth = 1
+        segmentControl.layer.cornerRadius = 30
+        segmentControl.addTarget(self, action: #selector(segmentControlValueChanged(_:)), for: .valueChanged)
+        view.addSubview(segmentControl)
+        
+        segmentControl.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(helloLabel.snp.bottom).offset(15)
+            make.width.equalTo(237)
+            make.height.equalTo(27)
+        }
+        
+    }
+    
+    func setupTrainContainer() {
+        trainConteinerView.backgroundColor = #colorLiteral(red: 0.9019607902, green: 0.9019607902, blue: 0.9019607902, alpha: 1)
+        trainConteinerView.layer.cornerRadius = 20
+        
+        view.addSubview(trainConteinerView)
+        
+        trainConteinerView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalTo(segmentControl.snp.bottom).offset(80)
+            make.height.equalTo(370)
+            make.width.equalTo(316)
+        }
+        
+        trainLabel.text = "День груди"
+        trainLabel.textAlignment = .left
+        trainLabel.font = .systemFont(ofSize: 20)
+        
+        trainConteinerView.addSubview(trainLabel)
+        
+        trainLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.leading.equalToSuperview().offset(15)
+            make.height.equalTo(30)
+            make.width.equalTo(200)
+        }
+        
+        firstExsButton.backgroundColor = buttonColor
+        firstExsButton.layer.cornerRadius = 20
+        
+        secondExsButton.backgroundColor = buttonColor
+        secondExsButton.layer.cornerRadius = 20
+        
+        thirdExsButton.backgroundColor = buttonColor
+        thirdExsButton.layer.cornerRadius = 20
+        
+        fourthExsButton.backgroundColor = buttonColor
+        fourthExsButton.layer.cornerRadius = 20
+        
+        fifthExsButton.backgroundColor = buttonColor
+        fifthExsButton.layer.cornerRadius = 20
+        
+        trainConteinerView.addSubview(firstExsButton)
+        trainConteinerView.addSubview(secondExsButton)
+        trainConteinerView.addSubview(thirdExsButton)
+        trainConteinerView.addSubview(fourthExsButton)
+        trainConteinerView.addSubview(fifthExsButton)
+
+        firstExsButton.snp.makeConstraints { make in
+            make.width.equalTo(buttonWidth)
+            make.height.equalTo(buttonHeight)
+            make.top.equalTo(trainLabel.snp.bottom).offset(25)
+            make.centerX.equalToSuperview()
+        }
+        
+        secondExsButton.snp.makeConstraints { make in
+            make.width.equalTo(buttonWidth)
+            make.height.equalTo(buttonHeight)
+            make.top.equalTo(firstExsButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        thirdExsButton.snp.makeConstraints { make in
+            make.width.equalTo(buttonWidth)
+            make.height.equalTo(buttonHeight)
+            make.top.equalTo(secondExsButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        fourthExsButton.snp.makeConstraints { make in
+            make.width.equalTo(buttonWidth)
+            make.height.equalTo(buttonHeight)
+            make.top.equalTo(thirdExsButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        fifthExsButton.snp.makeConstraints { make in
+            make.width.equalTo(buttonWidth)
+            make.height.equalTo(buttonHeight)
+            make.top.equalTo(fourthExsButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+    }
+    
+    func setupCompleatedButton() {
+        completedButton.backgroundColor = #colorLiteral(red: 0.9535692334, green: 0.4975354075, blue: 0.4972377419, alpha: 1)
+        completedButton.setTitle("Выполнил", for: .normal)
+        completedButton.layer.cornerRadius = 20
+        
+        view.addSubview(completedButton)
+        
+        completedButton.snp.makeConstraints { make in
+            make.width.equalTo(280)
+            make.height.equalTo(50)
+            make.top.equalTo(trainConteinerView.snp.bottom).offset(80)
+            make.centerX.equalToSuperview()
+        }
+    }
+    
+    func setupDietLabel() {
+        dietLabel.textAlignment = .center
+        dietLabel.text = "Введите ваш сегодняшний рацион"
+        dietLabel.numberOfLines = 2
+        dietLabel.isHidden = true
+        dietLabel.font = .systemFont(ofSize: 20)
+        
+        view.addSubview(dietLabel)
+        
+        dietLabel.snp.makeConstraints{ make in
+            make.width.equalTo(300)
+            make.height.equalTo(60)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(segmentControl.snp.bottom).offset(80)
+        }
+    }
+    
+    func setupInputTextField() {
+        inputTextField.backgroundColor = #colorLiteral(red: 0.850980401, green: 0.850980401, blue: 0.850980401, alpha: 1)
+        inputTextField.layer.cornerRadius = 20
+        inputTextField.isHidden = true
+        inputTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: inputTextField.frame.height))
+        inputTextField.leftViewMode = .always
+            
+        view.addSubview(inputTextField)
+            
+        inputTextField.snp.makeConstraints { make in
+            make.top.equalTo(dietLabel.snp.bottom).offset(30)
+            make.leading.equalToSuperview().offset(30)
+            make.width.equalTo(270)
+            make.height.equalTo(50)
+        }
+    }
+    
+    func setupAddButton() {
+        addButton.setTitle("+", for: .normal)
+        addButton.backgroundColor = #colorLiteral(red: 0.825640142, green: 0.4129830003, blue: 0.4117295742, alpha: 1)
+        addButton.layer.cornerRadius = 20
+        addButton.isHidden = true
+//        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        
+        view.addSubview(addButton)
+            
+        addButton.snp.makeConstraints { make in
+            make.top.equalTo(dietLabel.snp.bottom).offset(30)
+            make.leading.equalTo(inputTextField.snp.trailing).offset(10)
+            make.width.height.equalTo(50)
+        }
+    }
+    
+//    @objc func addButtonTapped() {
+//        guard let text = inputTextField.text, !text.isEmpty else {
+//            return
+//        }
+//
+//        let newLabel = UILabel()
+//        newLabel.text = text
+//
+//        guard let labelsStackView = labelsStackView else {
+//            return
+//        }
+//
+//        labelsStackView.addArrangedSubview(newLabel)
+//        inputTextField.text = ""
+//    }
+
+    
+    @objc func segmentControlValueChanged(_ sender: UISegmentedControl) {
+        let selectedIndex = sender.selectedSegmentIndex
+        
+        let shouldHideTrainItems = selectedIndex == 1
+        let shouldHideDietItem = selectedIndex == 0
+        
+        trainConteinerView.isHidden = shouldHideTrainItems
+        trainLabel.isHidden = shouldHideTrainItems
+        firstExsButton.isHidden = shouldHideTrainItems
+        secondExsButton.isHidden = shouldHideTrainItems
+        thirdExsButton.isHidden = shouldHideTrainItems
+        fourthExsButton.isHidden = shouldHideTrainItems
+        fifthExsButton.isHidden = shouldHideTrainItems
+        completedButton.isHidden = shouldHideTrainItems
+        
+        dietLabel.isHidden = shouldHideDietItem
+        inputTextField.isHidden = shouldHideDietItem
+        addButton.isHidden = shouldHideDietItem
+    }
 }
 
-extension MainMenuViewController: MainMenuDisplayLogic {}
+extension MainMenuViewController: MainMenuDisplayLogic {
+    
+    func dataToInteractor() {
+        interactor?.getData(userId: userId)
+    }
+    
+    func updateInterfaceWithProcessedData(username: String, gender: String, sportExp: String, sportExpNext: String, preference: String, time: Int) {
+        
+        helloLabel.text = "Привет, \(username)!"
+    }
+}
