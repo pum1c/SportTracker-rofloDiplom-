@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MainMenuPresentationLogic: AnyObject {
-    func pullData(userData: [String:Any])
+    func pullData(userData: [String:Any], trenData: [String:Any])
 }
 
 final class MainMenuPresenter {
@@ -23,7 +23,7 @@ final class MainMenuPresenter {
 
 extension MainMenuPresenter: MainMenuPresentationLogic {
     
-    func pullData(userData: [String:Any]) {
+    func pullData(userData: [String:Any], trenData: [String:Any]) {
         guard
             let username = userData["name"] as? String,
             let gender = userData["gender"] as? String,

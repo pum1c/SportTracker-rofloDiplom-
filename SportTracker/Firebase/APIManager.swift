@@ -70,4 +70,27 @@ class APIManager {
             }
         }
     }
+    
+    func fetchData(fromCollection collection: String, document: String, completion: @escaping ([String: Any]?, Error?) -> Void) {
+        let db = Firestore.firestore()
+        
+        let docRef = db.collection(collection).document(document)
+        
+        docRef.getDocument { (document, error) in
+            if let error = error {
+                completion(nil, error) // Если есть ошибка, передаем ее через completion
+                return
+            }
+            
+            guard let document = document, document.exists else {
+                let error = NSError(domain: "YourDomain", code: 404, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])
+                completion(nil, error) // Если документ не существует, создаем ошибку и передаем через completion
+                return
+            }
+            
+            let data = document.data()
+            completion(data, nil) // Передаем данные через completion
+        }
+    }
+
 }

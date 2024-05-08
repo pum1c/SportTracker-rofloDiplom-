@@ -57,7 +57,13 @@ final class MainMenuViewController: UIViewController {
     let inputTextField = UITextField()
     let addButton = UIButton()
 
-    let labelsStackView = UIStackView()
+    let stackView: UIStackView = {
+            let stackView = UIStackView()
+            stackView.axis = .vertical
+            stackView.spacing = 10
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            return stackView
+        }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +83,7 @@ final class MainMenuViewController: UIViewController {
         setupTrainContainer()
         setupCompleatedButton()
         setupDietLabel()
+        setupStackView()
         setupInputTextField()
         setupAddButton()
     }
@@ -142,18 +149,28 @@ final class MainMenuViewController: UIViewController {
         
         firstExsButton.backgroundColor = buttonColor
         firstExsButton.layer.cornerRadius = 20
+        firstExsButton.setTitle("Отжимания от пола", for: .normal)
+        firstExsButton.setTitleColor(.black, for: .normal)
         
         secondExsButton.backgroundColor = buttonColor
         secondExsButton.layer.cornerRadius = 20
+        secondExsButton.setTitle("Отжимания от брусьев", for: .normal)
+        secondExsButton.setTitleColor(.black, for: .normal)
         
         thirdExsButton.backgroundColor = buttonColor
         thirdExsButton.layer.cornerRadius = 20
+        thirdExsButton.setTitle("Жим гантелей", for: .normal)
+        thirdExsButton.setTitleColor(.black, for: .normal)
         
         fourthExsButton.backgroundColor = buttonColor
         fourthExsButton.layer.cornerRadius = 20
-        
+        fourthExsButton.setTitle("Подъем гантелей на бицепс", for: .normal)
+        fourthExsButton.setTitleColor(.black, for: .normal)
+
         fifthExsButton.backgroundColor = buttonColor
         fifthExsButton.layer.cornerRadius = 20
+        fifthExsButton.setTitle("Подтягивания обратным хватом", for: .normal)
+        fifthExsButton.setTitleColor(.black, for: .normal)
         
         trainConteinerView.addSubview(firstExsButton)
         trainConteinerView.addSubview(secondExsButton)
@@ -230,19 +247,32 @@ final class MainMenuViewController: UIViewController {
         }
     }
     
+    func setupStackView(){
+        stackView.isHidden = true
+        view.addSubview(stackView)
+        
+        stackView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.top.equalTo(dietLabel.snp.bottom).offset(20)
+            make.width.equalTo(300)
+        }
+    }
+    
     func setupInputTextField() {
         inputTextField.backgroundColor = #colorLiteral(red: 0.850980401, green: 0.850980401, blue: 0.850980401, alpha: 1)
         inputTextField.layer.cornerRadius = 20
         inputTextField.isHidden = true
         inputTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: inputTextField.frame.height))
         inputTextField.leftViewMode = .always
-            
-        view.addSubview(inputTextField)
-            
+        inputTextField.setContentHuggingPriority(.required, for: .vertical)
+        inputTextField.setContentCompressionResistancePriority(.required, for: .vertical)
+
+        stackView.addArrangedSubview(inputTextField)
+        
         inputTextField.snp.makeConstraints { make in
-            make.top.equalTo(dietLabel.snp.bottom).offset(30)
-            make.leading.equalToSuperview().offset(30)
-            make.width.equalTo(270)
+            make.leading.equalToSuperview()
+            make.width.equalTo(250)
             make.height.equalTo(50)
         }
     }
@@ -252,34 +282,40 @@ final class MainMenuViewController: UIViewController {
         addButton.backgroundColor = #colorLiteral(red: 0.825640142, green: 0.4129830003, blue: 0.4117295742, alpha: 1)
         addButton.layer.cornerRadius = 20
         addButton.isHidden = true
-//        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(addNewField), for: .touchUpInside)
         
-        view.addSubview(addButton)
+        stackView.addArrangedSubview(addButton)
             
         addButton.snp.makeConstraints { make in
-            make.top.equalTo(dietLabel.snp.bottom).offset(30)
-            make.leading.equalTo(inputTextField.snp.trailing).offset(10)
+            make.trailing.equalToSuperview().offset(20)
             make.width.height.equalTo(50)
         }
     }
     
-//    @objc func addButtonTapped() {
-//        guard let text = inputTextField.text, !text.isEmpty else {
-//            return
-//        }
-//
-//        let newLabel = UILabel()
-//        newLabel.text = text
-//
-//        guard let labelsStackView = labelsStackView else {
-//            return
-//        }
-//
-//        labelsStackView.addArrangedSubview(newLabel)
-//        inputTextField.text = ""
-//    }
+    @objc func addNewField() {
+        // Проверяем, что поле ввода не пустое
+        guard let text = inputTextField.text, !text.isEmpty else { return }
+        
+        // Создаем новый UILabel
+        let newLabel = UILabel()
+        newLabel.backgroundColor = #colorLiteral(red: 0.850980401, green: 0.850980401, blue: 0.850980401, alpha: 1)
+        newLabel.layer.cornerRadius = 20
+        newLabel.text = text
+        
+        // Установка размера шрифта
+        newLabel.font = UIFont.systemFont(ofSize: 16) // Установите нужный вам размер шрифта
+        
+        newLabel.setContentHuggingPriority(.required, for: .vertical)
+        newLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        
+        // Добавляем новый лейбл в stackView
+        stackView.insertArrangedSubview(newLabel, at: stackView.arrangedSubviews.count - 1)
+        
+        // Очищаем поле ввода
+        inputTextField.text = ""
+    }
 
-    
+
     @objc func segmentControlValueChanged(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
         
@@ -296,6 +332,7 @@ final class MainMenuViewController: UIViewController {
         completedButton.isHidden = shouldHideTrainItems
         
         dietLabel.isHidden = shouldHideDietItem
+        stackView.isHidden = shouldHideDietItem
         inputTextField.isHidden = shouldHideDietItem
         addButton.isHidden = shouldHideDietItem
     }

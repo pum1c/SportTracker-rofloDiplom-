@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4734ED73990408194B6091AA /* Pods_SportTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B224426FAF04BA267DA44B /* Pods_SportTracker.framework */; };
+		E30148C32BE8CC09003025EC /* TrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30148C22BE8CC09003025EC /* TrainingManager.swift */; };
 		E369C38E2B41BE7D00A26447 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369C38D2B41BE7D00A26447 /* NameViewController.swift */; };
 		E369C3A92B48375600A26447 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369C3A82B48375600A26447 /* SplashScreenViewController.swift */; };
 		E369C3AD2B5D222800A26447 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E369C3AC2B5D222800A26447 /* GoogleService-Info.plist */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		164F527D5431D13D5D67388D /* Pods-SportTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportTracker.debug.xcconfig"; path = "Target Support Files/Pods-SportTracker/Pods-SportTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		B83481E3D121CBD265581CBA /* Pods-SportTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportTracker.release.xcconfig"; path = "Target Support Files/Pods-SportTracker/Pods-SportTracker.release.xcconfig"; sourceTree = "<group>"; };
+		E30148C22BE8CC09003025EC /* TrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingManager.swift; sourceTree = "<group>"; };
 		E369C38D2B41BE7D00A26447 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		E369C3A82B48375600A26447 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		E369C3AC2B5D222800A26447 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -126,6 +128,14 @@
 				B83481E3D121CBD265581CBA /* Pods-SportTracker.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E30148C12BE8CBEE003025EC /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				E30148C22BE8CC09003025EC /* TrainingManager.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		E369C38A2B41BD2A00A26447 /* Registr */ = {
@@ -263,6 +273,7 @@
 		E3FD2EAE2AFB86BA005060A2 /* SportTracker */ = {
 			isa = PBXGroup;
 			children = (
+				E30148C12BE8CBEE003025EC /* Tools */,
 				E369C3BA2B5E85E000A26447 /* Firebase */,
 				E369C38B2B41BD9700A26447 /* Presentation */,
 				E3FD2EAF2AFB86BA005060A2 /* AppDelegate.swift */,
@@ -493,6 +504,7 @@
 				E3F192502BAACD470023ED4E /* MainMenuViewController.swift in Sources */,
 				E369C3BC2B5E85F600A26447 /* FirebaseManager.swift in Sources */,
 				E3F192522BAACD570023ED4E /* MainMenuInteractor.swift in Sources */,
+				E30148C32BE8CC09003025EC /* TrainingManager.swift in Sources */,
 				E3F192472BA1ADD70023ED4E /* TimeViewController.swift in Sources */,
 				E3F192562BAACD8B0023ED4E /* MainMenuRouter.swift in Sources */,
 				E3F192582BAACDA00023ED4E /* MainMenuFactory.swift in Sources */,
