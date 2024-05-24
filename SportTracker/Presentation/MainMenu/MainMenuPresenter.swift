@@ -8,7 +8,8 @@
 import Foundation
 
 protocol MainMenuPresentationLogic: AnyObject {
-    func pullData(userData: [String:Any], trenData: [String:Any])
+    func pullData(userData: [String:Any])
+    func navigateToEdit()
 }
 
 final class MainMenuPresenter {
@@ -22,8 +23,12 @@ final class MainMenuPresenter {
 }
 
 extension MainMenuPresenter: MainMenuPresentationLogic {
+    func navigateToEdit() {
+        router.openEditController()
+    }
     
-    func pullData(userData: [String:Any], trenData: [String:Any]) {
+    
+    func pullData(userData: [String:Any]) {
         guard
             let username = userData["name"] as? String,
             let gender = userData["gender"] as? String,
@@ -38,5 +43,5 @@ extension MainMenuPresenter: MainMenuPresentationLogic {
         viewController?.updateInterfaceWithProcessedData(username: username, gender: gender, sportExp: sportExp, sportExpNext: sportExpNext, preference: preference, time: time)
         }
         
-    }
+}
 

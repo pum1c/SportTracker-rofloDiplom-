@@ -20,9 +20,9 @@ protocol SegmentControlDelegate: AnyObject {
 }
 
 final class MainMenuViewController: UIViewController {
-
+    
     var interactor: MainMenuBusinessLogic?
-
+    
     let db = APIManager()
     let userId: String
     
@@ -30,13 +30,14 @@ final class MainMenuViewController: UIViewController {
         self.userId = userId
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     let helloLabel = UILabel()
     
+    let editButton = UIButton()
     let segmentControl = UISegmentedControl(items: ["Тренировка", "Диета"])
     
     let trainConteinerView = UIView()
@@ -52,18 +53,18 @@ final class MainMenuViewController: UIViewController {
     let buttonColor = #colorLiteral(red: 0.850980401, green: 0.850980401, blue: 0.850980401, alpha: 1)
     
     let completedButton = UIButton()
-
+    
     let dietLabel = UILabel()
     let inputTextField = UITextField()
     let addButton = UIButton()
-
+    
     let stackView: UIStackView = {
-            let stackView = UIStackView()
-            stackView.axis = .vertical
-            stackView.spacing = 10
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-            return stackView
-        }()
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +81,7 @@ final class MainMenuViewController: UIViewController {
         dataToInteractor()
         setupHelloLabel()
         setupSegmentControl()
+        setupEditButton()
         setupTrainContainer()
         setupCompleatedButton()
         setupDietLabel()
@@ -103,6 +105,20 @@ final class MainMenuViewController: UIViewController {
         }
     }
     
+    func setupEditButton() {
+        let editImage = UIImage(named: "editer")
+        editButton.setImage(editImage, for: .normal)
+        editButton.addTarget(self, action: #selector(switchToEditController), for: .touchUpInside)
+        
+        view.addSubview(editButton)
+        
+        editButton.snp.makeConstraints { make in
+            make.height.width.equalTo(30)
+            make.leading.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(100)
+        }
+    }
+    
     func setupSegmentControl() {
         segmentControl.selectedSegmentTintColor = UIColor.white
         segmentControl.backgroundColor = #colorLiteral(red: 0.850980401, green: 0.850980401, blue: 0.850980401, alpha: 1)
@@ -114,11 +130,10 @@ final class MainMenuViewController: UIViewController {
         
         segmentControl.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(helloLabel.snp.bottom).offset(15)
+            make.top.equalTo(helloLabel.snp.bottom).offset(35)
             make.width.equalTo(237)
             make.height.equalTo(27)
         }
-        
     }
     
     func setupTrainContainer() {
@@ -134,7 +149,7 @@ final class MainMenuViewController: UIViewController {
             make.width.equalTo(316)
         }
         
-        trainLabel.text = "День груди"
+        trainLabel.text = ""
         trainLabel.textAlignment = .left
         trainLabel.font = .systemFont(ofSize: 20)
         
@@ -166,7 +181,7 @@ final class MainMenuViewController: UIViewController {
         fourthExsButton.layer.cornerRadius = 20
         fourthExsButton.setTitle("Подъем гантелей на бицепс", for: .normal)
         fourthExsButton.setTitleColor(.black, for: .normal)
-
+        
         fifthExsButton.backgroundColor = buttonColor
         fifthExsButton.layer.cornerRadius = 20
         fifthExsButton.setTitle("Подтягивания обратным хватом", for: .normal)
@@ -177,7 +192,7 @@ final class MainMenuViewController: UIViewController {
         trainConteinerView.addSubview(thirdExsButton)
         trainConteinerView.addSubview(fourthExsButton)
         trainConteinerView.addSubview(fifthExsButton)
-
+        
         firstExsButton.snp.makeConstraints { make in
             make.width.equalTo(buttonWidth)
             make.height.equalTo(buttonHeight)
@@ -267,7 +282,7 @@ final class MainMenuViewController: UIViewController {
         inputTextField.leftViewMode = .always
         inputTextField.setContentHuggingPriority(.required, for: .vertical)
         inputTextField.setContentCompressionResistancePriority(.required, for: .vertical)
-
+        
         stackView.addArrangedSubview(inputTextField)
         
         inputTextField.snp.makeConstraints { make in
@@ -285,7 +300,7 @@ final class MainMenuViewController: UIViewController {
         addButton.addTarget(self, action: #selector(addNewField), for: .touchUpInside)
         
         stackView.addArrangedSubview(addButton)
-            
+        
         addButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(20)
             make.width.height.equalTo(50)
@@ -314,8 +329,8 @@ final class MainMenuViewController: UIViewController {
         // Очищаем поле ввода
         inputTextField.text = ""
     }
-
-
+    
+    
     @objc func segmentControlValueChanged(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
         
@@ -336,16 +351,21 @@ final class MainMenuViewController: UIViewController {
         inputTextField.isHidden = shouldHideDietItem
         addButton.isHidden = shouldHideDietItem
     }
-}
-
-extension MainMenuViewController: MainMenuDisplayLogic {
     
+    @objc func switchToEditController() {
+        interactor?.navigateToPresenter()
+    }
+}
+    
+extension MainMenuViewController: MainMenuDisplayLogic {
+        
     func dataToInteractor() {
         interactor?.getData(userId: userId)
     }
-    
-    func updateInterfaceWithProcessedData(username: String, gender: String, sportExp: String, sportExpNext: String, preference: String, time: Int) {
+        
+    func updateInterfaceWithProcessedData(username: String, gender: String, sportExp: String,sportExpNext: String, preference: String, time: Int) {
         
         helloLabel.text = "Привет, \(username)!"
     }
 }
+

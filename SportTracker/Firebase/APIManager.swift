@@ -12,7 +12,6 @@ import FirebaseDatabase
 
 class APIManager {
     
-    
     static let shared = APIManager()
     
     private func configureFB() -> Firestore {
@@ -92,5 +91,4 @@ class APIManager {
             completion(data, nil) // Передаем данные через completion
         }
     }
-
 }

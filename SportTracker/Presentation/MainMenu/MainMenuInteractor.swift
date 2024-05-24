@@ -11,6 +11,7 @@ protocol MainMenuBusinessLogic: AnyObject {
 
     func dataToPresenter(userData: [String:Any])
     func getData(userId: String)
+    func navigateToPresenter()
 }
 
 protocol MainMenuDataSource {}
@@ -25,6 +26,10 @@ final class MainMenuInteractor {
 }
 
 extension MainMenuInteractor: MainMenuBusinessLogic {
+    func navigateToPresenter() {
+        presenter?.navigateToEdit()
+    }
+    
  
     func getData(userId: String) {
         db.getUserData(userID: userId) { [weak self] userData, error in
@@ -42,7 +47,7 @@ extension MainMenuInteractor: MainMenuBusinessLogic {
     }
         
     func dataToPresenter(userData: [String:Any]) {
-            presenter?.pullData(userData: userData, trenData: tm.lastFetchedData! )
+            presenter?.pullData(userData: userData)
         }
         
 }

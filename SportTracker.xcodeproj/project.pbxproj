@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4734ED73990408194B6091AA /* Pods_SportTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B224426FAF04BA267DA44B /* Pods_SportTracker.framework */; };
 		E30148C32BE8CC09003025EC /* TrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30148C22BE8CC09003025EC /* TrainingManager.swift */; };
+		E30148C62BF20760003025EC /* EditerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30148C52BF20760003025EC /* EditerViewController.swift */; };
+		E30148C82BF8AC4F003025EC /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30148C72BF8AC4F003025EC /* TableViewDataSource.swift */; };
+		E30148CA2BF8B06A003025EC /* EditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30148C92BF8B06A003025EC /* EditTableViewCell.swift */; };
 		E369C38E2B41BE7D00A26447 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369C38D2B41BE7D00A26447 /* NameViewController.swift */; };
 		E369C3A92B48375600A26447 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369C3A82B48375600A26447 /* SplashScreenViewController.swift */; };
 		E369C3AD2B5D222800A26447 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E369C3AC2B5D222800A26447 /* GoogleService-Info.plist */; };
@@ -60,6 +63,9 @@
 		164F527D5431D13D5D67388D /* Pods-SportTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportTracker.debug.xcconfig"; path = "Target Support Files/Pods-SportTracker/Pods-SportTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		B83481E3D121CBD265581CBA /* Pods-SportTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportTracker.release.xcconfig"; path = "Target Support Files/Pods-SportTracker/Pods-SportTracker.release.xcconfig"; sourceTree = "<group>"; };
 		E30148C22BE8CC09003025EC /* TrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingManager.swift; sourceTree = "<group>"; };
+		E30148C52BF20760003025EC /* EditerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditerViewController.swift; sourceTree = "<group>"; };
+		E30148C72BF8AC4F003025EC /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		E30148C92BF8B06A003025EC /* EditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewCell.swift; sourceTree = "<group>"; };
 		E369C38D2B41BE7D00A26447 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		E369C3A82B48375600A26447 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		E369C3AC2B5D222800A26447 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -138,6 +144,16 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		E30148C42BF20738003025EC /* Editer */ = {
+			isa = PBXGroup;
+			children = (
+				E30148C52BF20760003025EC /* EditerViewController.swift */,
+				E30148C72BF8AC4F003025EC /* TableViewDataSource.swift */,
+				E30148C92BF8B06A003025EC /* EditTableViewCell.swift */,
+			);
+			path = Editer;
+			sourceTree = "<group>";
+		};
 		E369C38A2B41BD2A00A26447 /* Registr */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +174,7 @@
 				E369C3BD2B6A50C200A26447 /* Auth */,
 				E369C38A2B41BD2A00A26447 /* Registr */,
 				E3F1924E2BAACD0A0023ED4E /* MainMenu */,
+				E30148C42BF20738003025EC /* Editer */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -504,14 +521,17 @@
 				E3F192502BAACD470023ED4E /* MainMenuViewController.swift in Sources */,
 				E369C3BC2B5E85F600A26447 /* FirebaseManager.swift in Sources */,
 				E3F192522BAACD570023ED4E /* MainMenuInteractor.swift in Sources */,
+				E30148CA2BF8B06A003025EC /* EditTableViewCell.swift in Sources */,
 				E30148C32BE8CC09003025EC /* TrainingManager.swift in Sources */,
 				E3F192472BA1ADD70023ED4E /* TimeViewController.swift in Sources */,
 				E3F192562BAACD8B0023ED4E /* MainMenuRouter.swift in Sources */,
+				E30148C82BF8AC4F003025EC /* TableViewDataSource.swift in Sources */,
 				E3F192582BAACDA00023ED4E /* MainMenuFactory.swift in Sources */,
 				E369C3C52B6D102300A26447 /* PreferenceViewController.swift in Sources */,
 				E3F192542BAACD660023ED4E /* MainMenuPresenter.swift in Sources */,
 				E369C3A92B48375600A26447 /* SplashScreenViewController.swift in Sources */,
 				E3FD2EB22AFB86BA005060A2 /* SceneDelegate.swift in Sources */,
+				E30148C62BF20760003025EC /* EditerViewController.swift in Sources */,
 				E369C3C32B6D0FEB00A26447 /* SportExpNextViewController.swift in Sources */,
 				E369C38E2B41BE7D00A26447 /* NameViewController.swift in Sources */,
 			);
